@@ -1,0 +1,31 @@
+
+#canvas{
+  display: flex;
+  margin: auto;
+  border: 10px solid black;
+  border-color: #3366cc;
+  border-radius: 10px;
+}
+/*
+body {
+  background-color: tan;
+}*/
+
+
+#start{
+  position: absolute;
+  top: 385px;
+  left: 610px;
+  font-family: sans-serif;
+  font-size: 32px;
+  padding: 10px;
+  border: 3px solid black;
+  border-radius: 5px;
+  background-color: coral;
+  min-width: 200px;
+}
+
+.hidden{
+  display: none;
+
+}
