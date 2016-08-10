@@ -52,8 +52,8 @@ Game.prototype.setUp = function(ctx){
     this.keys.push(new Key(pos,Game.MOVES[idx],idx))
   }.bind(this))
 }
-Game.prototype.addNotes = function(){
-  this.song.addNotes();
+Game.prototype.addNotes = function(songTime){
+  this.song.addNotes(songTime);
 }
 
 Game.prototype.notesOutOfBound = function(){

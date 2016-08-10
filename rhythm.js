@@ -11,3 +11,6 @@ var game = new Game();
 // music.addEventListener('canplaythrough', music.play(), false);
 new GameView(game,ctx).startScreen();
 })
+
+
+window.GameView = GameView;

@@ -5,14 +5,30 @@ function GameView(game,ctx){
   this.ctx = ctx;
   this.keys = this.game.keys;
   this.page = 1;
+  this.startTime = 0;
   this.setUpListeners()
 }
+var array = []
+
 
 GameView.MOVES = ["q","w","e","r"];
+// window.array = array;
 
 GameView.prototype.run = function(){
   var that = this;
-  window.setInterval(function(){that.game.addNotes()},500)
+  // window.setInterval(function(){
+  //   songTime = new Date().getTime()/1000 - that.startTime
+  //   songTime = Math.round(songTime*2)/2
+  //   that.game.addNotes(songTime)
+  // },500)
+
+  // document.addEventListener("keydown",function(){array.push(new Date().getTime()/1000 - that.startTime)})
+  window.setInterval(function(){
+    songTime = new Date().getTime()/1000 - that.startTime
+    songTime = Math.round(songTime*10)/10
+
+    that.game.addNotes(songTime)
+  },100)
   requestAnimationFrame(this.animate.bind(this));
 }
 
@@ -36,15 +52,21 @@ GameView.prototype.setUpListeners = function(){
 
 GameView.prototype.changePage = function(page){
   this.page = page
+  var that = this;
   if(this.page === 2){
       this.run();
         setTimeout(function(){
         var music = document.getElementById('music')
+        that.songStarted();
+        console.log('SONG STARTED')
         music.addEventListener('canplaythrough', music.play(), false)
-      },4000)
+      },5000)
       this.startButton.className = "hidden";
   }
 }
 
+GameView.prototype.songStarted = function(){
+  this.startTime = new Date().getTime()/1000
+}
 
 module.exports = GameView
