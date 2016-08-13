@@ -24,6 +24,10 @@
   display: none;
 }
 
+.modal-title{
+  color: #FF6A6A;
+  font-size: 18px;
+}
 .modal-dialog{
   position: absolute;
   top: 200px;

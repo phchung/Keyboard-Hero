@@ -335,7 +335,6 @@
 	  this.keys = this.game.keys;
 	  this.page = 1;
 	  this.startTime = 0;
-	  this.pause = false;
 	  this.setUpListeners()
 	}
 	
@@ -346,7 +345,6 @@
 	  var timer = window.setInterval(function(){
 	    songTime = new Date().getTime()/1000 - that.startTime
 	    songTime = Math.round(songTime*10)/10
-	    console.log(songTime)
 	    that.game.addNotes(songTime)
 	    if(songTime === 70){
 	      that.page = 3;
@@ -367,10 +365,8 @@
 	      break;
 	
 	    case 2:
-	      if(!this.pause){
 	        this.game.draw(this.ctx);
 	        that.game.step()
-	      }
 	      break;
 	
 	    case 3:
