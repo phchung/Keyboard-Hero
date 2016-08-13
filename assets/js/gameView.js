@@ -12,19 +12,18 @@ function GameView(game,ctx){
 GameView.MOVES = ["q","w","e","r"];
 
 GameView.prototype.run = function(){
-  var that = this;
   var timer = window.setInterval(function(){
-    songTime = new Date().getTime()/1000 - that.startTime
+    songTime = new Date().getTime()/1000 - this.startTime
     songTime = Math.round(songTime*10)/10
-    that.game.addNotes(songTime)
+    this.game.addNotes(songTime)
     if(songTime === 70){
-      that.page = 3;
+      this.page = 3;
       clearInterval(timer)
       document.getElementById('music').pause()
       document.getElementById('music').currentTime = 0;
     }
-  },100)
-  frameID = requestAnimationFrame(function(){that.animate()});
+  }.bind(this),100)
+  frameID = requestAnimationFrame(function(){this.animate()});
 }
 
 GameView.prototype.animate = function(){
