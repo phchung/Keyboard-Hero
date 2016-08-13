@@ -49,4 +49,4 @@ Score.SONG = [
 
 ## Future Features
 
-- Using the laws of simliar triangles to create a 3D view of the arrows coming towards the user.
+- Create a 3D render view of the arrows coming towards the viewer.
