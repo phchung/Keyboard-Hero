@@ -86,14 +86,8 @@ GameView.prototype.togglePause = function(){
 GameView.prototype.changePage = function(page){
   this.page = page
   var that = this;
-  // this.run();
   if(this.page === 2){
     $("#myModal").modal("show");
-    // this.game.draw(this.ctx);
-    // var music = document.getElementById('music')
-    // that.songStarted();
-    // music.addEventListener('canplaythrough', music.play(), false)
-    // this.startButton.className = "hidden";
   } else {
     this.startScreen()
   }

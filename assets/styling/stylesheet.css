@@ -24,14 +24,9 @@
   display: none;
 }
 
-/*.modal-body {
-  width: 100px;
-}*/
-
 .modal-dialog{
   position: absolute;
   top: 200px;
-  /*right: 200px;*/
   width: 100px;
   background-color: #DDF2FF;
 }
@@ -43,22 +38,25 @@
 .modal-body{
   display: flex;
   justify-content: space-between;
-  /*flex-direction: column;*/
 }
 
 #welcome {
   font-size: 20px;
 }
-/*
-#numbered_instruction{
-  margin-top: 0px;
-}*/
 
 #numbered_instruction > div{
   padding-top: 15px;
 }
 
 .arrow_instruction{
-  width: 285px;
+  position: relative;
+  width: 295px;
   height: 250px;
+  bottom: 22px;
+}
+
+.git{
+  position: relative;
+  bottom: 805px;
+  left: 498px;
 }

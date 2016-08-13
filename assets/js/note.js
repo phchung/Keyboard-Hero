@@ -10,7 +10,7 @@ Note.prototype.draw = function(ctx){
   var note = document.getElementById(Note.ARROW[this.idx])
     ctx.drawImage(note,65,0,63,64,this.pos[0],this.pos[1],95,95);
 }
-// note one = ctx.drawImage(note,0,0,63,64,this.pos[0],this.pos[1],95,95);
+
 Note.prototype.move = function(){
   this.pos[1] = this.pos[1] + 3;
 }

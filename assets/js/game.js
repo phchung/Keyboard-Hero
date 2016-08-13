@@ -13,21 +13,15 @@ function Game(){
 
 Game.DIM_X = 550;
 Game.DIM_Y = 800;
-// Game.NOTELANE = [200,350,500,650];
 Game.NOTELANE = [100,215,330,445];
 Game.KEY = [100,215,330,445];
 Game.MOVES = ["q","w","e","r"];
 Game.KEYCODE = [81,87,69,82]
-// Game.COMBO = { "q": 81, "w": 87, "e": 69, "r": 82 }
 Game.COMBO = {81:"q",87:"w",69:"e",82:"r"}
 
 Game.prototype.draw = function(ctx){
   ctx.clearRect(0,0,Game.DIM_X,Game.DIM_Y)
-  // ctx.fillStyle = "#F8F8FF";
-  // ctx.fillRect(0,0,Game.DIM_X,Game.DIM_Y)
   ctx.drawImage(bg,0,0,Game.DIM_X,Game.DIM_Y)
-  // ctx2.fillStyle = "#F8F8FF";
-  // ctx2.fillRect(0,0,Game.DIM_X,Game.DIM_Y)
   var that = this;
   ctx.font = "30px Lato"
   ctx.fillStyle = '#ffffb3';
@@ -74,16 +68,16 @@ Game.prototype.hit = function(key_index){
   var initial_height = this.keys[0].pos[1];
   var final_height = initial_height + this.keys[0].dim_y;
   this.notes.forEach(function(note,index){
-    var nintypercent = note.diameter * .90
-    var tenpercent = note.diameter * .30
-    var note_index = Game.NOTELANE.indexOf(note.pos[0])
-      if(key_index === note_index){
-        if(note.pos[1] > 700 + tenpercent
-              || note.pos[1] > final_height - tenpercent){
-                that.score+=100
-                that.notes.splice(index,1)
-          } else {
-            console.log('miss')
+  var nintypercent = note.diameter * .90
+  var tenpercent = note.diameter * .30
+  var note_index = Game.NOTELANE.indexOf(note.pos[0])
+    if(key_index === note_index){
+      if(note.pos[1] > 700 + tenpercent
+            || note.pos[1] > final_height - tenpercent){
+              that.score+=100
+              that.notes.splice(index,1)
+        } else {
+          console.log('miss')
         }
       }
     })

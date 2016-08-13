@@ -24,7 +24,6 @@ function sort(array){
   return array2
 }
 
-// [time,lane]
 Score.SONG = [
   [1.8,1],
   [3.1,1],
@@ -81,27 +80,8 @@ Score.SONG = [
   [65.2,2],
   [65.2,2],
   [67.9,2],
-  [70.6,2],
-  
-  // 75second SONGTIME
+  [70.6,2]
 ]
-
-// Score.prototype.addNotes = function(){
-//   var collection = []
-//   for (n=0;n<4;n++){
-//     var noteIndex = Score.SONG[this.bar].indexOf(Score.SONG[this.bar][n])
-//     debugger;
-//     var lane = Score.NOTELANE[n]
-//     if (Score.SONG[this.bar][n] === '1')
-//     collection.push(new Note(lane,n))
-//   }
-//   this.game.notes = this.game.notes.concat(collection)
-//     if(this.bar === 3){
-//       this.bar = 0
-//     } else {
-//       this.bar++
-//     }
-// }
 
 Score.prototype.addNotes = function(songTime){
   var collection = []
