@@ -10,10 +10,9 @@ Use QWER to match the floating arrows. The objective is to get as many points as
 
 This game was created with:
 
--Javascript
--HTML5 Canvas
--Bootstrap
--jQuery
-
+- Javascript
+- HTML5 Canvas
+- Bootstrap
+- jQuery
 
 ![Example1](./assets/pictures/example1.png)
