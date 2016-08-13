@@ -200,7 +200,6 @@
 	  this.move = move;
 	  this.dim_y = 10;
 	  this.idx = idx
-	  this.pressed = false;
 	}
 	
 	Key.CANVAS_POS = [0,215,445,660];
