@@ -37,6 +37,7 @@ GameView.prototype.run = function(){
   frameID = requestAnimationFrame(function(){this.animate()});
 }
 
+// [songTime,lane position]
 Score.SONG = [
   [1.8,0],
   [3.1,0],
