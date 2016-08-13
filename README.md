@@ -23,7 +23,6 @@ GameView.prototype.songStarted = function(){
 }
 
 GameView.prototype.run = function(){
-  var that = this;
   var timer = window.setInterval(function(){
     songTime = new Date().getTime()/1000 - this.startTime
     songTime = Math.round(songTime*10)/10
