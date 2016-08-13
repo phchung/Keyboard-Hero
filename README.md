@@ -15,4 +15,12 @@ This game was created with:
 - Bootstrap
 - jQuery
 
+Desinging the timing between the arrows and the song required creating an internal clock when the song has started.
+
+```
+GameView.prototype.songStarted = function(){
+  this.startTime = new Date().getTime()/1000
+}
+```
+
 ![Example1](./assets/pictures/example1.png)
