@@ -6,62 +6,96 @@ function GameView(game,ctx){
   this.keys = this.game.keys;
   this.page = 1;
   this.startTime = 0;
+  this.pause = false;
   this.setUpListeners()
 }
-var array = []
-
 
 GameView.MOVES = ["q","w","e","r"];
-// window.array = array;
 
 GameView.prototype.run = function(){
   var that = this;
-  // window.setInterval(function(){
-  //   songTime = new Date().getTime()/1000 - that.startTime
-  //   songTime = Math.round(songTime*2)/2
-  //   that.game.addNotes(songTime)
-  // },500)
-
-  // document.addEventListener("keydown",function(){array.push(new Date().getTime()/1000 - that.startTime)})
-  window.setInterval(function(){
+  var timer = window.setInterval(function(){
     songTime = new Date().getTime()/1000 - that.startTime
     songTime = Math.round(songTime*10)/10
-
+    console.log(songTime)
     that.game.addNotes(songTime)
+    if(songTime === 5){
+      that.page = 3;
+      clearInterval(timer)
+      document.getElementById('music').pause()
+      document.getElementById('music').currentTime = 0;
+    }
   },100)
-  requestAnimationFrame(this.animate.bind(this));
+  frameID = requestAnimationFrame(function(){that.animate()});
 }
 
-GameView.prototype.animate = function(time){
-  this.game.draw(this.ctx);
-  this.game.step()
-  requestAnimationFrame(this.animate.bind(this));
+GameView.prototype.animate = function(){
+  var that = this;
+  switch(this.page){
+    case 1:
+      cancelAnimationFrame(frameID)
+      return;
+      break;
+
+    case 2:
+      if(!this.pause){
+        this.game.draw(this.ctx);
+        that.game.step()
+      }
+      break;
+
+    case 3:
+      this.ctx.clearRect(0, 0, 800, 900);
+      this.ctx.font = "40px Lato";
+      this.ctx.fillText("Thank You For Playing", 90, 250);
+      this.ctx.fillText("Your Score:",150,350)
+      this.ctx.fillText(this.game.score,350,350)
+      this.ctx.fillStyle = "black";
+      this.retryButton.className = "show";
+      this.game.notes = [];
+      break;
+  }
+  requestAnimationFrame(function(){that.animate()});
 };
 
 GameView.prototype.startScreen = function(){
   this.ctx.clearRect(0, 0, 800, 900);
   this.ctx.font = "64px Handlee";
   this.ctx.fillStyle = "black";
-  this.ctx.fillText("NOT DDR", 110, 300);
+  this.ctx.fillText("Keyboard Hero", 80, 300);
+  this.retryButton.className = "hidden";
+  this.startButton.className= "show";
 }
 
 GameView.prototype.setUpListeners = function(){
   this.startButton = document.getElementById("start")
+  this.retryButton = document.getElementById('retry')
   this.startButton.addEventListener('click',this.changePage.bind(this,2))
+  this.retryButton.addEventListener('click',this.changePage.bind(this,1))
+  $('#myModal').on("hidden.bs.modal", this.togglePause.bind(this));
+}
+
+GameView.prototype.togglePause = function(){
+  this.run();
+  var music = document.getElementById('music')
+  this.songStarted();
+  music.addEventListener('canplaythrough', music.play(), false)
+  this.startButton.className = "hidden";
 }
 
 GameView.prototype.changePage = function(page){
   this.page = page
   var that = this;
+  // this.run();
   if(this.page === 2){
-      this.run();
-        setTimeout(function(){
-        var music = document.getElementById('music')
-        that.songStarted();
-        console.log('SONG STARTED')
-        music.addEventListener('canplaythrough', music.play(), false)
-      },5000)
-      this.startButton.className = "hidden";
+    $("#myModal").modal("show");
+    // this.game.draw(this.ctx);
+    // var music = document.getElementById('music')
+    // that.songStarted();
+    // music.addEventListener('canplaythrough', music.play(), false)
+    // this.startButton.className = "hidden";
+  } else {
+    this.startScreen()
   }
 }
 

@@ -11,11 +11,34 @@
      <img id ="down" src="./assets/pictures/Note_Down.png" alt="notes" style="display:none"/>
      <img id = "glow" src="./assets/pictures/Arrow_Glow3.png" alt="notes" style="display:none"/>
      <audio class="sound" id="music" src="./assets/audio/loud_pipes.mp3"></audio>
+     <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   </head>
   <body>
       <canvas id="canvas" class="canvas"></canvas>
     <button id="start">Start Game</button>
+    <button id="retry" class="hidden">Retry</button>
     <!-- <script type="application/javascript" src="vendor/keymaster.js"></script> -->
     <script type="application/javascript" src="./bundle.js"></script>
+    <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4 class="modal-title">Instructions (Please lower your volume to a moderate level!)</h4>
+       </div>
+       <div class="modal-body">
+          <div class="instruction_text">
+            <div id="welcome">Welcome to Keyboard Hero!</div>
+            <div id="numbered_instruction">
+              <div>1. Use Q W E R to match the timing of the floating arrows </div>
+              <div>2. Points are rewarded for every matched arrow</div>
+            </div>
+          </div>
+            <img class="arrow_instruction" src="./assets/pictures/instruction_arrow.png"/>
+       </div>
+     </div>
+    </div>
   </body>
-</html>
+  </html>

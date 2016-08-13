@@ -1,31 +1,64 @@
 
 #canvas{
   display: flex;
-  margin: auto;
   border: 10px solid black;
   border-color: #3366cc;
   border-radius: 10px;
 }
-/*
-body {
-  background-color: tan;
-}*/
 
-
-#start{
+#start, #retry{
   position: absolute;
   top: 385px;
-  left: 610px;
+  left: 180px;
   font-family: sans-serif;
   font-size: 32px;
   padding: 10px;
   border: 3px solid black;
   border-radius: 5px;
-  background-color: coral;
+  background-color: #3366cc;
+  color: white;
   min-width: 200px;
 }
 
 .hidden{
   display: none;
+}
 
+/*.modal-body {
+  width: 100px;
+}*/
+
+.modal-dialog{
+  position: absolute;
+  top: 200px;
+  /*right: 200px;*/
+  width: 100px;
+  background-color: #DDF2FF;
+}
+
+.modal-body, .modal-header{
+    background-color: #DDF2FF;
+}
+
+.modal-body{
+  display: flex;
+  justify-content: space-between;
+  /*flex-direction: column;*/
+}
+
+#welcome {
+  font-size: 20px;
+}
+/*
+#numbered_instruction{
+  margin-top: 0px;
+}*/
+
+#numbered_instruction > div{
+  padding-top: 15px;
+}
+
+.arrow_instruction{
+  width: 285px;
+  height: 250px;
 }

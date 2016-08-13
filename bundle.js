@@ -76,7 +76,6 @@
 	  this.score = 0;
 	  this.song = new Score(this)
 	  this.setUp();
-	  // this.addNotes();
 	  document.addEventListener("keydown", this.keyDownTextField.bind(this), false);
 	}
 	
@@ -240,10 +239,10 @@
 	
 	Score.NOTELANE = [100,215,330,445];
 	
-	var array = [5.8, 7.1, 8.4, 9.8, 11.1, 12.5, 13.9, 15.2, 16.6, 17.9, 19.3, 20.6, 21.4,
-	  22.1, 22.8, 23.5, 24.1, 24.8, 25.6, 26.2, 26.9, 27.6, 28.3, 29.6, 30.3,
-	  31, 31.6, 32.3, 33.1, 33.8, 34.4, 35, 35.8, 36.5, 37.1, 37.1, 37.8, 37.8,
-	  38.5, 38.5, 39.2, 39.2]
+	var array = [[18.1,2], [19.4,2], [20.8,2], [22.2,2], [23.6,2], [24.9,2], [26.3,2], [27.6,2], [28.9,2], [30.3,2], [31.7,2],
+	[  33.1,2], [34.5,2], [35.8,2], [37.2,2], [38.5,2], [39.2,2], [39.9,2], [40.6,2], [41.4,2], [42.6,2], [44,2], [45.4,2], [46.7,2],
+	[  48.1,2], [49.4,2], [50.1,2], [50.8,2], [52.2,2], [53.6,2], [54.9,2], [56.3,2], [57.6,2], [59,2], [60.3,2], [61,2], [61.7,2], [63.1,2],
+	[  63.1,2], [65.2,2], [65.2,2], [67.9,2], [70.6,2]]
 	
 	function sort(array){
 	  var array2 = []
@@ -258,22 +257,64 @@
 	
 	// [time,lane]
 	Score.SONG = [
+	  [1.8,1],
+	  [3.1,1],
+	  [4.4,1],
 	  [5.8,1],
 	  [7.1,1],
-	  [8.4,1],
-	  [9.8,1],
-	  [11.1,1],
-	  [12.5,1],
+	  [8.5,1],
+	  [9.9,1],
+	  [11.2,1],
+	  [12.6,1],
 	  [13.9,1],
-	  [15.2,1],
+	  [15.3,1],
 	  [16.6,1],
-	  [17.9,1],
-	  [19.3,1],
-	  [20.6,1],
-	  [21.4,1],
-	  [21.1,1],
-	  [22.8,1],
-	  [23.5,1]
+	  // all good at this point
+	  [18.1,2],
+	  [19.4,2],
+	  [20.8,2],
+	  [22.2,2],
+	  [23.6,2],
+	  [24.9,2],
+	  [26.3,2],
+	  [27.6,2],
+	  [28.9,2],
+	  [30.3,2],
+	  [31.7,2],
+	  [33.1,2],
+	  [34.5,2],
+	  [35.8,2],
+	  [37.2,2],
+	  [38.5,2],
+	  [39.2,2],
+	  [39.9,2],
+	  [40.6,2],
+	  [41.4,2],
+	  [42.6,2],
+	  [44,2],
+	  [45.4,2],
+	  [46.7,2],
+	  [48.1,2],
+	  [49.4,2],
+	  [50.1,2],
+	  [50.8,2],
+	  [52.2,2],
+	  [53.6,2],
+	  [54.9,2],
+	  [56.3,2],
+	  [57.6,2],
+	  [59,2],
+	  [60.3,2],
+	  [61,2],
+	  [61.7,2],
+	  [63.1,2],
+	  [63.1,2],
+	  [65.2,2],
+	  [65.2,2],
+	  [67.9,2],
+	  [70.6,2],
+	  
+	  // 75second SONGTIME
 	]
 	
 	// Score.prototype.addNotes = function(){
@@ -318,62 +359,96 @@
 	  this.keys = this.game.keys;
 	  this.page = 1;
 	  this.startTime = 0;
+	  this.pause = false;
 	  this.setUpListeners()
 	}
-	var array = []
-	
 	
 	GameView.MOVES = ["q","w","e","r"];
-	// window.array = array;
 	
 	GameView.prototype.run = function(){
 	  var that = this;
-	  // window.setInterval(function(){
-	  //   songTime = new Date().getTime()/1000 - that.startTime
-	  //   songTime = Math.round(songTime*2)/2
-	  //   that.game.addNotes(songTime)
-	  // },500)
-	
-	  // document.addEventListener("keydown",function(){array.push(new Date().getTime()/1000 - that.startTime)})
-	  window.setInterval(function(){
+	  var timer = window.setInterval(function(){
 	    songTime = new Date().getTime()/1000 - that.startTime
 	    songTime = Math.round(songTime*10)/10
-	
+	    console.log(songTime)
 	    that.game.addNotes(songTime)
+	    if(songTime === 5){
+	      that.page = 3;
+	      clearInterval(timer)
+	      document.getElementById('music').pause()
+	      document.getElementById('music').currentTime = 0;
+	    }
 	  },100)
-	  requestAnimationFrame(this.animate.bind(this));
+	  frameID = requestAnimationFrame(function(){that.animate()});
 	}
 	
-	GameView.prototype.animate = function(time){
-	  this.game.draw(this.ctx);
-	  this.game.step()
-	  requestAnimationFrame(this.animate.bind(this));
+	GameView.prototype.animate = function(){
+	  var that = this;
+	  switch(this.page){
+	    case 1:
+	      cancelAnimationFrame(frameID)
+	      return;
+	      break;
+	
+	    case 2:
+	      if(!this.pause){
+	        this.game.draw(this.ctx);
+	        that.game.step()
+	      }
+	      break;
+	
+	    case 3:
+	      this.ctx.clearRect(0, 0, 800, 900);
+	      this.ctx.font = "40px Lato";
+	      this.ctx.fillText("Thank You For Playing", 90, 250);
+	      this.ctx.fillText("Your Score:",150,350)
+	      this.ctx.fillText(this.game.score,350,350)
+	      this.ctx.fillStyle = "black";
+	      this.retryButton.className = "show";
+	      this.game.notes = [];
+	      break;
+	  }
+	  requestAnimationFrame(function(){that.animate()});
 	};
 	
 	GameView.prototype.startScreen = function(){
 	  this.ctx.clearRect(0, 0, 800, 900);
 	  this.ctx.font = "64px Handlee";
 	  this.ctx.fillStyle = "black";
-	  this.ctx.fillText("NOT DDR", 110, 300);
+	  this.ctx.fillText("Keyboard Hero", 80, 300);
+	  this.retryButton.className = "hidden";
+	  this.startButton.className= "show";
 	}
 	
 	GameView.prototype.setUpListeners = function(){
 	  this.startButton = document.getElementById("start")
+	  this.retryButton = document.getElementById('retry')
 	  this.startButton.addEventListener('click',this.changePage.bind(this,2))
+	  this.retryButton.addEventListener('click',this.changePage.bind(this,1))
+	  $('#myModal').on("hidden.bs.modal", this.togglePause.bind(this));
+	}
+	
+	GameView.prototype.togglePause = function(){
+	  this.run();
+	  var music = document.getElementById('music')
+	  this.songStarted();
+	  music.addEventListener('canplaythrough', music.play(), false)
+	  this.startButton.className = "hidden";
 	}
 	
 	GameView.prototype.changePage = function(page){
 	  this.page = page
 	  var that = this;
+	  // this.run();
 	  if(this.page === 2){
-	      this.run();
-	        setTimeout(function(){
-	        var music = document.getElementById('music')
-	        that.songStarted();
-	        console.log('SONG STARTED')
-	        music.addEventListener('canplaythrough', music.play(), false)
-	      },5000)
-	      this.startButton.className = "hidden";
+	    $("#myModal").modal("show");
+	    // this.game.draw(this.ctx);
+	    // var music = document.getElementById('music')
+	    // that.songStarted();
+	    // music.addEventListener('canplaythrough', music.play(), false)
+	    // this.startButton.className = "hidden";
+	  } else {
+	    this.startScreen()
 	  }
 	}
 	
