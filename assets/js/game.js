@@ -76,7 +76,7 @@ Game.prototype.hit = function(key_index){
             || note.pos[1] > final_height - tenpercent){
               that.score+=100
               that.notes.splice(index,1)
-        } 
+        }
       }
     })
   }
