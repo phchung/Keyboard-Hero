@@ -28,13 +28,13 @@ GameView.prototype.run = function(){
     songTime = Math.round(songTime*10)/10
     this.game.addNotes(songTime)
     if(songTime === 70){
-      that.page = 3;
+      this.page = 3;
       clearInterval(timer)
       document.getElementById('music').pause()
       document.getElementById('music').currentTime = 0;
     }
   }.bind(this),100)
-  frameID = requestAnimationFrame(function(){that.animate()});
+  frameID = requestAnimationFrame(function(){this.animate()});
 }
 
 Score.SONG = [
