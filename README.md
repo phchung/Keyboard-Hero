@@ -1,4 +1,6 @@
-# Keyboard-Hero
+# [Keyboard Hero][link]
+[link]: http://phchung.github.io/phchung/Keyboard-Hero
+
 
 #Instructions
 
