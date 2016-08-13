@@ -19,7 +19,7 @@ GameView.prototype.run = function(){
     songTime = Math.round(songTime*10)/10
     console.log(songTime)
     that.game.addNotes(songTime)
-    if(songTime === 5){
+    if(songTime === 70){
       that.page = 3;
       clearInterval(timer)
       document.getElementById('music').pause()

@@ -68,17 +68,15 @@ Game.prototype.hit = function(key_index){
   var initial_height = this.keys[0].pos[1];
   var final_height = initial_height + this.keys[0].dim_y;
   this.notes.forEach(function(note,index){
-  var nintypercent = note.diameter * .90
-  var tenpercent = note.diameter * .30
+  var nintypercent = note.diameter * .95
+  var tenpercent = note.diameter * .35
   var note_index = Game.NOTELANE.indexOf(note.pos[0])
     if(key_index === note_index){
       if(note.pos[1] > 700 + tenpercent
             || note.pos[1] > final_height - tenpercent){
               that.score+=100
               that.notes.splice(index,1)
-        } else {
-          console.log('miss')
-        }
+        } 
       }
     })
   }

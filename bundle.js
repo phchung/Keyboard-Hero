@@ -78,21 +78,15 @@
 	
 	Game.DIM_X = 550;
 	Game.DIM_Y = 800;
-	// Game.NOTELANE = [200,350,500,650];
 	Game.NOTELANE = [100,215,330,445];
 	Game.KEY = [100,215,330,445];
 	Game.MOVES = ["q","w","e","r"];
 	Game.KEYCODE = [81,87,69,82]
-	// Game.COMBO = { "q": 81, "w": 87, "e": 69, "r": 82 }
 	Game.COMBO = {81:"q",87:"w",69:"e",82:"r"}
 	
 	Game.prototype.draw = function(ctx){
 	  ctx.clearRect(0,0,Game.DIM_X,Game.DIM_Y)
-	  // ctx.fillStyle = "#F8F8FF";
-	  // ctx.fillRect(0,0,Game.DIM_X,Game.DIM_Y)
 	  ctx.drawImage(bg,0,0,Game.DIM_X,Game.DIM_Y)
-	  // ctx2.fillStyle = "#F8F8FF";
-	  // ctx2.fillRect(0,0,Game.DIM_X,Game.DIM_Y)
 	  var that = this;
 	  ctx.font = "30px Lato"
 	  ctx.fillStyle = '#ffffb3';
@@ -139,17 +133,15 @@
 	  var initial_height = this.keys[0].pos[1];
 	  var final_height = initial_height + this.keys[0].dim_y;
 	  this.notes.forEach(function(note,index){
-	    var nintypercent = note.diameter * .90
-	    var tenpercent = note.diameter * .30
-	    var note_index = Game.NOTELANE.indexOf(note.pos[0])
-	      if(key_index === note_index){
-	        if(note.pos[1] > 700 + tenpercent
-	              || note.pos[1] > final_height - tenpercent){
-	                that.score+=100
-	                that.notes.splice(index,1)
-	          } else {
-	            console.log('miss')
-	        }
+	  var nintypercent = note.diameter * .95
+	  var tenpercent = note.diameter * .35
+	  var note_index = Game.NOTELANE.indexOf(note.pos[0])
+	    if(key_index === note_index){
+	      if(note.pos[1] > 700 + tenpercent
+	            || note.pos[1] > final_height - tenpercent){
+	              that.score+=100
+	              that.notes.splice(index,1)
+	        } 
 	      }
 	    })
 	  }
@@ -191,7 +183,7 @@
 	  var note = document.getElementById(Note.ARROW[this.idx])
 	    ctx.drawImage(note,65,0,63,64,this.pos[0],this.pos[1],95,95);
 	}
-	// note one = ctx.drawImage(note,0,0,63,64,this.pos[0],this.pos[1],95,95);
+	
 	Note.prototype.move = function(){
 	  this.pos[1] = this.pos[1] + 3;
 	}
@@ -236,11 +228,6 @@
 	
 	Score.NOTELANE = [100,215,330,445];
 	
-	var array = [[18.1,2], [19.4,2], [20.8,2], [22.2,2], [23.6,2], [24.9,2], [26.3,2], [27.6,2], [28.9,2], [30.3,2], [31.7,2],
-	[  33.1,2], [34.5,2], [35.8,2], [37.2,2], [38.5,2], [39.2,2], [39.9,2], [40.6,2], [41.4,2], [42.6,2], [44,2], [45.4,2], [46.7,2],
-	[  48.1,2], [49.4,2], [50.1,2], [50.8,2], [52.2,2], [53.6,2], [54.9,2], [56.3,2], [57.6,2], [59,2], [60.3,2], [61,2], [61.7,2], [63.1,2],
-	[  63.1,2], [65.2,2], [65.2,2], [67.9,2], [70.6,2]]
-	
 	function sort(array){
 	  var array2 = []
 	  array.forEach(function(point){
@@ -252,84 +239,76 @@
 	  return array2
 	}
 	
-	// [time,lane]
 	Score.SONG = [
-	  [1.8,1],
-	  [3.1,1],
-	  [4.4,1],
+	  [1.8,0],
+	  [3.1,0],
+	  [4.4,0],
+	  [5.8,0],
 	  [5.8,1],
-	  [7.1,1],
-	  [8.5,1],
-	  [9.9,1],
+	  [7.1,0],
+	  [8.5,0],
+	  [9.9,0],
+	  [11.2,0],
 	  [11.2,1],
-	  [12.6,1],
-	  [13.9,1],
-	  [15.3,1],
-	  [16.6,1],
-	  // all good at this point
+	  [12.6,2],
+	  [13.9,3],
+	  [15.3,0],
+	  [16.6,0],
+	  [16.6,3],
+	  [18.1,1],
 	  [18.1,2],
+	  [19.4,1],
 	  [19.4,2],
-	  [20.8,2],
-	  [22.2,2],
-	  [23.6,2],
+	  [20.8,0],
+	  [22.2,0],
+	  [23.6,1],
 	  [24.9,2],
-	  [26.3,2],
-	  [27.6,2],
+	  [26.3,3],
+	  [27.6,3],
+	  [27.6,0],
 	  [28.9,2],
+	  [28.9,1],
+	  [30.3,1],
 	  [30.3,2],
-	  [31.7,2],
-	  [33.1,2],
-	  [34.5,2],
+	  [31.7,0],
+	  [33.1,0],
+	  [34.5,1],
 	  [35.8,2],
-	  [37.2,2],
+	  [37.2,3],
+	  [38.5,3],
 	  [38.5,2],
 	  [39.2,2],
-	  [39.9,2],
-	  [40.6,2],
-	  [41.4,2],
+	  [39.2,1],
+	  [39.9,1],
+	  [39.9,0],
+	  [40.6,0],
+	  [41.4,1],
 	  [42.6,2],
-	  [44,2],
-	  [45.4,2],
+	  [44,3],
+	  [45.4,1],
 	  [46.7,2],
-	  [48.1,2],
+	  [48.1,3],
 	  [49.4,2],
+	  [49.4,3],
 	  [50.1,2],
+	  [50.1,3],
 	  [50.8,2],
-	  [52.2,2],
-	  [53.6,2],
+	  [50.8,3],
+	  [52.2,0],
+	  [53.6,1],
 	  [54.9,2],
-	  [56.3,2],
-	  [57.6,2],
-	  [59,2],
+	  [56.3,3],
+	  [57.6,0],
+	  [59,1],
 	  [60.3,2],
-	  [61,2],
-	  [61.7,2],
+	  [61,3],
+	  [61.7,0],
+	  [63.1,1],
 	  [63.1,2],
-	  [63.1,2],
-	  [65.2,2],
-	  [65.2,2],
-	  [67.9,2],
-	  [70.6,2],
-	  
-	  // 75second SONGTIME
+	  [65.2,3],
+	  [65.2,3],
+	  [67.9,3]
 	]
-	
-	// Score.prototype.addNotes = function(){
-	//   var collection = []
-	//   for (n=0;n<4;n++){
-	//     var noteIndex = Score.SONG[this.bar].indexOf(Score.SONG[this.bar][n])
-	//     debugger;
-	//     var lane = Score.NOTELANE[n]
-	//     if (Score.SONG[this.bar][n] === '1')
-	//     collection.push(new Note(lane,n))
-	//   }
-	//   this.game.notes = this.game.notes.concat(collection)
-	//     if(this.bar === 3){
-	//       this.bar = 0
-	//     } else {
-	//       this.bar++
-	//     }
-	// }
 	
 	Score.prototype.addNotes = function(songTime){
 	  var collection = []
@@ -369,7 +348,7 @@
 	    songTime = Math.round(songTime*10)/10
 	    console.log(songTime)
 	    that.game.addNotes(songTime)
-	    if(songTime === 5){
+	    if(songTime === 70){
 	      that.page = 3;
 	      clearInterval(timer)
 	      document.getElementById('music').pause()
