@@ -16,4 +16,4 @@ This game was created with:
 -jQuery
 
 
-![Example1](./assets/images/example1.png)
+![Example1](./assets/pictures/example1.png)
