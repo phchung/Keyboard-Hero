@@ -15,6 +15,10 @@ This game was created with:
 - Bootstrap
 - jQuery
 
+![Example1](./assets/pictures/example1.png)
+
+```Timing Rhythm
+
 Desinging the timing between the arrows and the song required creating an internal timer when the song has started. Arrows are constantly being added using setInterval with the songTime beingn the input. If the songTime matches with the value in Score.SONG then it gets added. 
 
 ```
@@ -45,8 +49,6 @@ Score.SONG = [
   [5.8,0],
   [5.8,1],
 ```
-
-![Example1](./assets/pictures/example1.png)
 
 ## Future Features
 
