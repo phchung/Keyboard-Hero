@@ -17,7 +17,7 @@ This game was created with:
 
 ![Example1](./assets/pictures/example1.png)
 
-```Timing Rhythm
+###Timing Rhythm
 
 Desinging the timing between the arrows and the song required creating an internal timer when the song has started. Arrows are constantly being added using setInterval with the songTime beingn the input. If the songTime matches with the value in Score.SONG then it gets added. 
 
