@@ -87,7 +87,6 @@
 	Game.prototype.draw = function(ctx){
 	  ctx.clearRect(0,0,Game.DIM_X,Game.DIM_Y)
 	  ctx.drawImage(bg,0,0,Game.DIM_X,Game.DIM_Y)
-	  var that = this;
 	  ctx.font = "30px Lato"
 	  ctx.fillStyle = '#ffffb3';
 	  ctx.fillText("Score: " + this.score, 10, 30);
@@ -351,7 +350,7 @@
 	      document.getElementById('music').currentTime = 0;
 	    }
 	  }.bind(this),100)
-	  frameID = requestAnimationFrame(function(){this.animate()});
+	  frameID = requestAnimationFrame(this.animate.bind(this));
 	}
 	
 	GameView.prototype.animate = function(){
@@ -378,7 +377,7 @@
 	      this.game.notes = [];
 	      break;
 	  }
-	  requestAnimationFrame(function(){that.animate()});
+	  requestAnimationFrame(this.animate.bind(this));
 	};
 	
 	GameView.prototype.startScreen = function(){

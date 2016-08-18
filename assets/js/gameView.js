@@ -23,7 +23,7 @@ GameView.prototype.run = function(){
       document.getElementById('music').currentTime = 0;
     }
   }.bind(this),100)
-  frameID = requestAnimationFrame(function(){this.animate()});
+  frameID = requestAnimationFrame(this.animate.bind(this));
 }
 
 GameView.prototype.animate = function(){
@@ -50,7 +50,7 @@ GameView.prototype.animate = function(){
       this.game.notes = [];
       break;
   }
-  requestAnimationFrame(function(){that.animate()});
+  requestAnimationFrame(this.animate.bind(this));
 };
 
 GameView.prototype.startScreen = function(){

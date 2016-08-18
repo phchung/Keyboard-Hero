@@ -22,7 +22,6 @@ Game.COMBO = {81:"q",87:"w",69:"e",82:"r"}
 Game.prototype.draw = function(ctx){
   ctx.clearRect(0,0,Game.DIM_X,Game.DIM_Y)
   ctx.drawImage(bg,0,0,Game.DIM_X,Game.DIM_Y)
-  var that = this;
   ctx.font = "30px Lato"
   ctx.fillStyle = '#ffffb3';
   ctx.fillText("Score: " + this.score, 10, 30);
