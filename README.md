@@ -15,6 +15,10 @@ This game was created with:
 - Bootstrap
 - jQuery
 
+![Example1](./assets/pictures/example1.png)
+
+###Timing Rhythm
+
 Desinging the timing between the arrows and the song required creating an internal timer when the song has started. Arrows are constantly being added using setInterval with the songTime beingn the input. If the songTime matches with the value in Score.SONG then it gets added. 
 
 ```
@@ -37,6 +41,7 @@ GameView.prototype.run = function(){
   frameID = requestAnimationFrame(function(){this.animate()});
 }
 
+// [songTime,lane position]
 Score.SONG = [
   [1.8,0],
   [3.1,0],
@@ -45,8 +50,6 @@ Score.SONG = [
   [5.8,1],
 ```
 
-![Example1](./assets/pictures/example1.png)
-
 ## Future Features
 
-- Using the laws of simliar triangles to create a 3D view of the arrows coming towards the user.
+- Create a 3D render view of the arrows coming towards the viewer.
