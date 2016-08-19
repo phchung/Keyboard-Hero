@@ -1,5 +1,5 @@
 # [Keyboard Hero][link]
-[link]: http://phchung.github.io/phchung/Keyboard-Hero
+[link]: https://phchung.github.io/
 
 
 #Instructions
