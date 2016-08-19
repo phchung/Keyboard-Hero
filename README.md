@@ -1,8 +1,6 @@
 # Keyboard Hero
-[Keyboard Hero][link]
+[Keyboard Hero][link] is a interactive Javascript rhythm game inspired by DDR.
 [link]: https://phchung.github.io/
-
-Keyboard Hero is a interactive Javascript rhythm game inspired by DDR.
 
 #Instructions
 
