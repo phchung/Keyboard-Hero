@@ -47,3 +47,7 @@ Score.SONG = [
   [5.8,0],
   [5.8,1],
 ```
+
+#Future Feature
+
+Visual feedback when getting points.

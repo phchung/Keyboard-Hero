@@ -12,7 +12,7 @@ function Game(){
 }
 
 Game.DIM_X = 550;
-Game.DIM_Y = 750;
+Game.DIM_Y = 767;
 Game.NOTELANE = [100,215,330,445];
 Game.KEY = [100,215,330,445];
 Game.MOVES = ["q","w","e","r"];
