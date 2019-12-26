@@ -1,4 +1,4 @@
-# Keyboard Hero
+Keyboard Hero
 [Keyboard Hero][link] is a interactive Javascript rhythm game inspired by DDR.
 [link]: https://phchung.github.io/
 
@@ -17,7 +17,7 @@ This game was created with:
 
 ![Example1](./assets/pictures/example1.png)
 
-###Timing Rhythm
+#Timing Rhythm
 
 Desinging the timing between the arrows and the song required creating an internal timer when the song has started. Arrows are constantly being added using setInterval with the songTime beingn the input. If the songTime matches with the value in Score.SONG then it gets added. 
 
@@ -49,7 +49,3 @@ Score.SONG = [
   [5.8,0],
   [5.8,1],
 ```
-
-## Future Features
-
-- Create a 3D render view of the arrows coming towards the viewer.
