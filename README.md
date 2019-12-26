@@ -1,6 +1,4 @@
-Keyboard Hero is a interactive Javascript rhythm game: 
-
-https://github.com/phchung/Keyboard-Hero
+Keyboard Hero is a interactive Javascript rhythm game: https://phchung.github.io/Keyboard-Hero/
 
 #Instructions
 
